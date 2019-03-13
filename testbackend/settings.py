@@ -85,11 +85,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dcis9l7gibl5fm',
-            'USER': 'cqknxeezrliwlh',
-            'PASSWORD': 'e56acfd5066b65f279e17ffed2e14a540119c0ecb43cdd3e89b7b40965831403',
-            'HOST': 'ec2-23-23-173-30.compute-1.amazonaws.com',
-            'PORT': '5432',
+            "NAME": os.environ.get('NAME', ''),
+            "USER": os.environ.get('USER', ''),
+            "PASSWORD": os.environ.get('PASSWORD', ''),
+            "HOST": os.environ.get('HOST', ''),
+            "PORT": os.environ.get('PORT', ''),
         }
 }
 

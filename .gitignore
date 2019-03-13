@@ -4,6 +4,7 @@
 # Distribution / packaging
 .Python
 env/
+environ.rc
 
 # Pycharm files
 .idea/

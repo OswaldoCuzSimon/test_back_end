@@ -21,6 +21,7 @@ docker run -e POSTGRES_DB=test_back_end \
 ### Run
 First activate the virtualenv
 ~~~shell
+source environ.rc
 python manage.py makemigrations restaurant
 python manage.py migrate restaurant
 python manage.py runserver
