@@ -1,1 +1,1 @@
-web: gunicorn test_back_end.wsgi --log-file -
+web: python test_back_end/manage.py runserver 0.0.0.0:$PORT
