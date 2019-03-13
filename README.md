@@ -14,5 +14,7 @@ pip install -r requirements.txt
 ### Run
 First activate the virtualenv
 ~~~shell
+python manage.py makemigrations restaurant
+python manage.py migrate restaurant
 python manage.py runserver
 ~~~

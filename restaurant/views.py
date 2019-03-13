@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-# Create your views here.
+from .models import Restaurant
+
+
+class RestaurantView(APIView):
+    def get(self, request):
+        articles = Restaurant.objects.all()
+        return Response({"restaurants": articles})
