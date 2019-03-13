@@ -35,3 +35,8 @@ class RestaurantView(APIView):
             restaurant_saved = serializer.save()
 
         return Response({"success": "Restaurant '{}' updated successfully".format(restaurant_saved.name)})
+
+    def delete(self, request, restaurant_id):
+        restaurant = get_object_or_404(Restaurant.objects.all(), id=restaurant_id)
+        restaurant.delete()
+        return Response({"message": "Restaurant with id {} has been deleted.".format(restaurant_id)}, status=204)
