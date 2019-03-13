@@ -23,6 +23,11 @@ First activate the virtualenv
 ~~~shell
 python manage.py makemigrations restaurant
 python manage.py migrate restaurant
-python ./manage.py import_csv restaurantes.csv 
 python manage.py runserver
+~~~
+
+### Load data 
+~~~
+wget -c https://s3-us-west-2.amazonaws.com/lgoveabucket/restaurantes.csv -O restaurantes.csv
+python manage.py import_csv restaurantes.csv 
 ~~~

@@ -10,6 +10,3 @@ env/
 
 # DB Sqlite for dev
 db.sqlite3
-
-# Initial data
-restaurantes.csv
