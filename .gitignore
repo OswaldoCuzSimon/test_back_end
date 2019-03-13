@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+*__pycache__*
+
+# Distribution / packaging
+.Python
+env/
+
+# Pycharm files
+.idea/
+
+# DB Sqlite for dev
+db.sqlite3
+
+# Initial data
+restaurantes.csv
