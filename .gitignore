@@ -7,3 +7,9 @@ env/
 
 # Pycharm files
 .idea/
+
+# DB Sqlite for dev
+db.sqlite3
+
+# Initial data
+restaurantes.csv
