@@ -10,11 +10,19 @@ virtualenv -p /usr/bin/python3.6 env
 source activate env
 pip install -r requirements.txt
 ~~~
-
+### Configure PostgreSQL
+using Docker
+~~~
+docker run -e POSTGRES_DB=test_back_end \
+    -e POSTGRES_USER=test_back_end \
+    -e POSTGRES_PASSWORD=test_back_end \
+    -e MAX_CONNECTIONS=1000 -p 5432:5432 -d postgres:9.6
+~~~
 ### Run
 First activate the virtualenv
 ~~~shell
 python manage.py makemigrations restaurant
 python manage.py migrate restaurant
+python ./manage.py import_csv restaurantes.csv 
 python manage.py runserver
 ~~~
