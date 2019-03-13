@@ -83,14 +83,14 @@ DEBUG = os.environ.get('DEBUG')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1g2oq1lhfagrq',
-        'USER': 'fbiclvuapdxmeg',
-        'PASSWORD': '1e41c5464de9160cec4d0b7aec10bc3e3880a65a18ffc134fab82691c92f8525',
-        'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dcis9l7gibl5fm',
+            'USER': 'cqknxeezrliwlh',
+            'PASSWORD': 'e56acfd5066b65f279e17ffed2e14a540119c0ecb43cdd3e89b7b40965831403',
+            'HOST': 'ec2-23-23-173-30.compute-1.amazonaws.com',
+            'PORT': '5432',
+        }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
