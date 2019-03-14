@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "86cce72b-ef3f-4eab-9863-2fbf229006d7",
+		"name": "test_back_end",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create restaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"restaurant\": {\n\t    \"id\": \"a850ff07-516e-44e4-acd7-26fa0c12f411\",\n\t    \"rating\": \"1\",\n\t    \"name\": \"Test 1\",\n\t    \"site\": \"http://test1.org\",\n\t    \"email\": \"test1@hotmail.com\",\n\t    \"phone\": \"508.505.560\",\n\t    \"street\": \"5588 Leticia Torrente\",\n\t    \"city\": \"Tetela de Ocampo Silviafurt\",\n\t    \"state\": \"Colima\",\n\t    \"lat\": \"20.434870\",\n\t    \"lng\": \"-90.128090\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/restaurant/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update restaurant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"restaurant\": {\n\t    \"restaurant_id\": \"a850ff07-516e-44e4-acd7-26fa0c12f411\",\n\t    \"rating\": 4,\n\t    \"email\": \"updatedtest1@hotmail.com\",\n\t    \"city\": \"updated city\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/restaurant/a850ff07-516e-44e4-acd7-26fa0c12f411",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant",
+						"a850ff07-516e-44e4-acd7-26fa0c12f411"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a restaurant",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/restaurant/a850ff07-516e-44e4-acd7-26fa0c12f411",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant",
+						"a850ff07-516e-44e4-acd7-26fa0c12f411"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/restaurant/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"restaurant",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
