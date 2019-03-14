@@ -1,5 +1,0 @@
-export NAME=MY_NAME
-export USER=MY_USER
-export PASSWORD=MY_PASSWORD
-export HOST=MY_HOST
-export PORT=MY_PORT
