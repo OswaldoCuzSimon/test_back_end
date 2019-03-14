@@ -6,6 +6,7 @@ API that will provide useful information about restaurants to users
 ### Create virtual environment
 using virtualenv
 ~~~
+sudo dnf install gdal -y
 virtualenv -p /usr/bin/python3.6 env
 source activate env
 pip install -r requirements.txt

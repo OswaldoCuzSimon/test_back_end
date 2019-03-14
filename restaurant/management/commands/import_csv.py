@@ -6,8 +6,6 @@ from restaurant.models import Restaurant
 from django.db.utils import IntegrityError
 from decimal import Decimal
 
-df = pd.read_csv('restaurantes.csv', sep=',')
-
 
 class Command(BaseCommand):
     help = 'import data from csv file'
