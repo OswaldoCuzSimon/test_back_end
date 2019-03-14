@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from os import environ
 import django_heroku
 import dj_database_url
 
@@ -82,8 +83,8 @@ WSGI_APPLICATION = 'testbackend.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DEBUG = os.environ.get('DEBUG')
-GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH', '')
-GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH', '')
+GEOS_LIBRARY_PATH = environ.get('GEOS_LIBRARY_PATH')
+GDAL_LIBRARY_PATH = environ.get('GDAL_LIBRARY_PATH')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DATABASES = {
