@@ -5,11 +5,11 @@ from .serializers import RestaurantSerializer
 from django.db.utils import IntegrityError
 from .models import Restaurant
 from django.shortcuts import get_object_or_404
-from rest_framework import generics
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import Distance
 from decimal import Decimal
 import numpy as np
+
 
 class RestaurantView(APIView):
     def get(self, request):
@@ -45,7 +45,8 @@ class RestaurantView(APIView):
         restaurant.delete()
         return Response({"message": "Restaurant with id {} has been deleted.".format(restaurant_id)}, status=204)
 
-class RestaurantStatistics(generics.ListAPIView):
+
+class RestaurantStatistics(APIView):
     """
     This view should return statistics of close restaurants
     """
