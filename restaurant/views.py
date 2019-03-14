@@ -14,13 +14,12 @@ class RestaurantView(APIView):
 
     def post(self, request):
         try:
-            article = request.data.get('restaurant')
+            restaurant = request.data.get('restaurant')
 
             # Create an article from the above data
-            serializer = RestaurantSerializer(data=article)
+            serializer = RestaurantSerializer(data=restaurant)
             if serializer.is_valid(raise_exception=True):
                 restaurant_saved = serializer.save()
-            serializer.validate_un
             return Response({
                 "success": "Restaurant '{}' created successfully".format(restaurant_saved.name)
             }, status=status.HTTP_201_CREATED)
