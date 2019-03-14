@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
-from django.db.utils import IntegrityError
-from django.contrib.gis.geos import fromstr, Point, GEOSGeometry
+from django.contrib.gis.geos import GEOSGeometry
 import pandas as pd
 from restaurant.models import Restaurant
 from django.db.utils import IntegrityError
