@@ -1,9 +1,10 @@
 from django.core.management.base import BaseCommand
 from django.db.utils import IntegrityError
-
+from django.contrib.gis.geos import fromstr, Point, GEOSGeometry
 import pandas as pd
 from restaurant.models import Restaurant
 from django.db.utils import IntegrityError
+from decimal import Decimal
 
 df = pd.read_csv('restaurantes.csv', sep=',')
 
@@ -18,8 +19,10 @@ class Command(BaseCommand):
         try:
             path = options['path']
             df = pd.read_csv(path, sep=',')
-            restaurants = [
-                Restaurant(
+            restaurants = []
+            for index, row in df.iterrows():
+                lat, lng = Decimal(row['lat']), Decimal(row['lng'])
+                restaurants.append(Restaurant(
                     id=row['id'],
                     rating=row['rating'],
                     name=row['name'],
@@ -29,11 +32,10 @@ class Command(BaseCommand):
                     street=row['street'],
                     city=row['city'],
                     state=row['state'],
-                    lat=row['lat'],
-                    lng=row['lng'],
-                )
-                for index, row in df.iterrows()
-            ]
+                    location=GEOSGeometry("POINT({0} {1})".format(lng, lat))
+,
+                ))
+
             Restaurant.objects.bulk_create(restaurants)
             self.stdout.write(self.style.SUCCESS(
                 'Successfully loaded {} records from {}'.format(len(restaurants), path)))
