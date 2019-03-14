@@ -1,7 +1,14 @@
+from decimal import Decimal
+
+from django.contrib.gis.geos import GEOSGeometry
 from rest_framework import serializers
 from .models import Restaurant
 
-class RestaurantSerializer(serializers.Serializer):
+class RestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = '__all__'
+
     id = serializers.CharField(max_length=36)
     rating = serializers.IntegerField()
     name = serializers.CharField(max_length=100)
@@ -11,8 +18,22 @@ class RestaurantSerializer(serializers.Serializer):
     street = serializers.CharField(max_length=100)
     city = serializers.CharField(max_length=100)
     state = serializers.CharField(max_length=100)
-    lat = serializers.DecimalField(max_digits=9, decimal_places=6)
-    lng = serializers.DecimalField(max_digits=9, decimal_places=6)
+    location = serializers.SerializerMethodField()
+
+
+    def get_location(self, obj):
+
+        return {
+                "lng": obj.location.x,
+                "lat": obj.location.y
+            }
+
+    def to_internal_value(self, data):
+        if 'location' in data:
+            lat, lng = Decimal(data['location']['lat']), Decimal(data['location']['lng'])
+            location = GEOSGeometry("POINT({0} {1})".format(lng, lat))
+            data['location'] = location
+        return data
 
     def create(self, validated_data):
         return Restaurant.objects.create(**validated_data)
@@ -26,8 +47,7 @@ class RestaurantSerializer(serializers.Serializer):
         instance.street = validated_data.get('street', instance.street)
         instance.city = validated_data.get('city', instance.city)
         instance.state = validated_data.get('state', instance.state)
-        instance.lat = validated_data.get('lat', instance.lat)
-        instance.lng = validated_data.get('lng', instance.lng)
+        instance.location = validated_data.get('location', instance.location)
 
         instance.save()
 
